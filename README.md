@@ -47,7 +47,7 @@ React Marvel Heroes
 ```bash
 git clone https://github.com/MacKentoch/react-marvel-heroes.git
 ```
-
+> Note: preview gif is 20Mb size so be patient.
 
 ### Install dependencies
 
