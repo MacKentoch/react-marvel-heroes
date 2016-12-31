@@ -28,7 +28,7 @@ React Marvel Heroes
 
 - babel 6+
 - eslint
-- hot reload V3 (*Dan Abramov seems to say that hot relaod v1 is deprecated so I jumped into v3 since React v15.4*)
+- hot reload V3 (*Dan Abramov seems to say that hot reload v1 is deprecated so I jumped into v3 since React v15.4*)
 - loaders
   - `js` / `jsx`
   - sass
