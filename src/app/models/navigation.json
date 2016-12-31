@@ -1,0 +1,18 @@
+{
+  "brand":      "React Marvel Heroes",
+  "leftLinks":  [],
+  "rightLinks": [
+    {
+      "label":      "Liste des super héros",
+      "link":       "/",
+      "view":       "home",
+      "isRouteBtn": true
+    },
+    {
+      "label":      "Fiche identité",
+      "link":       "/fiche",
+      "view":       "fiche",
+      "isRouteBtn": true
+    }
+  ]
+}
