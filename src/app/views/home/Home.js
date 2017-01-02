@@ -18,6 +18,14 @@ class Home extends PureComponent {
   };
 
   componentDidMount() {
+    window.addEventListener('resize', this.handlesScreenWidthChange);
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener('resize', this.handlesScreenWidthChange);
+  }
+
+  componentDidMount() {
     const { enterHome, getAllCharacters } = this.props;
     enterHome();
     getAllCharacters();
@@ -95,6 +103,13 @@ class Home extends PureComponent {
 
   handlesOnCardSizeChange = (cardSize) => {
     this.setState({ cardSize });
+  }
+
+  handlesScreenWidthChange = () => {
+    const { screenWidthChange } = this.props;
+    if (screenWidthChange) {
+      screenWidthChange();
+    }
   }
 }
 

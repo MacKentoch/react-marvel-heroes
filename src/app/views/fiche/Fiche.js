@@ -26,6 +26,8 @@ class Fiche extends PureComponent {
     } = this.props;
     enterFiche();
     getCharacterDetails(id);
+    const { screenWidthChange } = this.props;
+    screenWidthChange();
   }
 
   componentWillUnmount() {
@@ -153,7 +155,10 @@ Fiche.propTypes = {
       name: PropTypes.string
     })
   ).isRequired,
-  getCharacterDetails: PropTypes.func.isRequired
+  getCharacterDetails: PropTypes.func.isRequired,
+  // screen:
+  screenWidth: PropTypes.number.isRequired,
+  screenWidthChange: PropTypes.func.isRequired
 };
 
 export default Fiche;
