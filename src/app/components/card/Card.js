@@ -13,7 +13,7 @@ class Card extends PureComponent {
     ? urls.find(item => item.type === 'comiclink')
     : '';
 
-    const currentScreenWidth = screen.availWidth || '1920'; // 1080 res by default
+    const currentScreenWidth = window.innerWidth || '1920'; // 1080 res by default
     let cardSizeAdjust = currentScreenWidth < '1920' ? '240px' : '350px';
     if (cardSize === 2) {
       cardSizeAdjust = currentScreenWidth < '1920' ? '350px' : '420px';
