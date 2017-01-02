@@ -3,8 +3,20 @@ import { Link } from 'react-router';
 import cx from 'classnames';
 
 class Card extends PureComponent {
+  state = { screenWidth: '1920' };
+
+  componentWillMount() {
+    window.addEventListener('resize', this.eventWindowResize);
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener('resize', this.eventWindowResize);
+  }
+
   render() {
     const { id, name, picture, cardSize, urls } = this.props;
+    const { screenWidth } = this.state;
+
     const wikiUrl = Array.isArray(urls)
     ? urls.find(item => item.type === 'wiki')
     : '';
@@ -13,13 +25,15 @@ class Card extends PureComponent {
     ? urls.find(item => item.type === 'comiclink')
     : '';
 
-    const currentScreenWidth = window.innerWidth || '1920'; // 1080 res by default
-    let cardSizeAdjust = currentScreenWidth < '1920' ? '240px' : '350px';
+    let cardSizeAdjust = screenWidth < '1920' ? '240px' : '350px';
+    if (cardSize === 1) {
+      cardSizeAdjust = `${screenWidth / 5}px`;
+    }
     if (cardSize === 2) {
-      cardSizeAdjust = currentScreenWidth < '1920' ? '350px' : '420px';
+      cardSizeAdjust = `${screenWidth / 4}px`;
     }
     if (cardSize === 3) {
-      cardSizeAdjust = currentScreenWidth < '1920' ? '480px' : '780px';
+      cardSizeAdjust = `${screenWidth / 2.46}px`;
     }
 
     return (
@@ -86,6 +100,11 @@ class Card extends PureComponent {
         </div>
       </li>
     );
+  }
+
+  eventWindowResize = () => {
+    const screenWidth = window.innerWidth || '1920';
+    this.setState({ screenWidth });
   }
 }
 Card.propTypes = {
