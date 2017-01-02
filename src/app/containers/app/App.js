@@ -39,7 +39,9 @@ class App extends Component {
 
   handlesScreenWidthChange = () => {
     const { screenWidthChange } = this.props;
-    screenWidthChange();
+    if (screenWidthChange) {
+      screenWidthChange();
+    }
   }
 }
 

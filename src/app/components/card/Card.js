@@ -102,7 +102,6 @@ Card.propTypes = {
       url: PropTypes.string
     })
   ),
-
   screenWidth: PropTypes.number.isRequired,
   screenWidthChange: PropTypes.func.isRequired
 };
