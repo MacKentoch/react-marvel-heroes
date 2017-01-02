@@ -14,6 +14,14 @@ class App extends Component {
 
   state = { navModel : navigationModel };
 
+  componentDidMount() {
+    window.addEventListener('resize', this.handlesScreenWidthChange);
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener('resize', this.handlesScreenWidthChange);
+  }
+
   render() {
     const { children } = this.props;
     return (
@@ -28,6 +36,11 @@ class App extends Component {
       </div>
     );
   }
+
+  handlesScreenWidthChange = () => {
+    const { screenWidthChange } = this.props;
+    screenWidthChange();
+  }
 }
 
 // statics :
@@ -35,7 +48,8 @@ App.propTypes = {
   children:   PropTypes.node,
   history:    PropTypes.object,
   location:   PropTypes.object,
-  actions:    PropTypes.object
+  actions:    PropTypes.object,
+  screenWidthChange: PropTypes.func
 };
 
 const mapStateToProps = (state) => {

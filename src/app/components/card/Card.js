@@ -3,20 +3,8 @@ import { Link } from 'react-router';
 import cx from 'classnames';
 
 class Card extends PureComponent {
-  state = { screenWidth: '1920' };
-
-  componentWillMount() {
-    window.addEventListener('resize', this.eventWindowResize);
-    this.eventWindowResize();
-  }
-
-  componentWillUnMount() {
-    window.removeEventListener('resize', this.eventWindowResize);
-  }
-
   render() {
-    const { id, name, picture, cardSize, urls } = this.props;
-    const { screenWidth } = this.state;
+    const { id, name, picture, cardSize, urls, screenWidth } = this.props;
 
     const wikiUrl = Array.isArray(urls)
     ? urls.find(item => item.type === 'wiki')
@@ -102,11 +90,6 @@ class Card extends PureComponent {
       </li>
     );
   }
-
-  eventWindowResize = () => {
-    const screenWidth = window.innerWidth || '1920';
-    this.setState({ screenWidth });
-  }
 }
 Card.propTypes = {
   id: PropTypes.number.isRequired,
@@ -118,7 +101,10 @@ Card.propTypes = {
       type: PropTypes.oneOf(['detail', 'wiki', 'comiclink']),
       url: PropTypes.string
     })
-  )
+  ),
+
+  screenWidth: PropTypes.number.isRequired,
+  screenWidthChange: PropTypes.func.isRequired
 };
 
 Card.defaultProps = {

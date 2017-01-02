@@ -21,6 +21,8 @@ class Home extends PureComponent {
     const { enterHome, getAllCharacters } = this.props;
     enterHome();
     getAllCharacters();
+    const { screenWidthChange } = this.props;
+    screenWidthChange();
   }
 
   componentWillUnmount() {
@@ -36,7 +38,9 @@ class Home extends PureComponent {
     } = this.state;
 
     const {
-      characters
+      characters,
+      screenWidth,
+      screenWidthChange
     } = this.props;
 
     return(
@@ -76,6 +80,8 @@ class Home extends PureComponent {
                       cardSize={cardSize}
                       urls={urls}
                       onDetailClick={this.handlesOnDetailsClick}
+                      screenWidth={screenWidth}
+                      screenWidthChange={screenWidthChange}
                     />
                   )
                 )
@@ -92,7 +98,7 @@ class Home extends PureComponent {
   }
 }
 
-Home.propTypes= {
+Home.propTypes = {
   // view:
   currentView:  PropTypes.string.isRequired,
   enterHome:    PropTypes.func.isRequired,
@@ -116,7 +122,10 @@ Home.propTypes= {
       url: PropTypes.string
     })
   ),
-  getAllCharacters: PropTypes.func.isRequired
+  getAllCharacters: PropTypes.func.isRequired,
+  // screen:
+  screenWidth: PropTypes.number.isRequired,
+  screenWidthChange: PropTypes.func.isRequired
 };
 
 export default Home;

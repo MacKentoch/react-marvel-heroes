@@ -2,6 +2,7 @@ import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as viewsActions      from '../../redux/modules/views';
 import * as charactersActions from '../../redux/modules/characters';
+import * as screenActions     from '../../redux/modules/screen';
 import { Home }               from '../../views';
 
 
@@ -13,7 +14,10 @@ const mapStateToProps = (state) => {
     // characters store:
     lastRefresh: state.characters.time,
     isFetchingAllChars: state.characters.isFetching,
-    characters: state.characters.characters
+    characters: state.characters.characters,
+
+    // screen:
+    screenWidth: state.screen.screenWidth
   };
 };
 
@@ -24,7 +28,9 @@ const mapDispatchToProps = (dispatch) => {
       enterHome: viewsActions.enterHome,
       leaveHome: viewsActions.leaveHome,
       // characters actions:
-      getAllCharacters: charactersActions.getAllCharactersIfNeeded
+      getAllCharacters: charactersActions.getAllCharactersIfNeeded,
+      // screen:
+      screenWidthChange: screenActions.screenWidthChange
     },
     dispatch
   );
