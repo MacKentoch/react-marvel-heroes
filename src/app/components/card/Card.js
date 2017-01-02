@@ -104,7 +104,6 @@ class Card extends PureComponent {
   }
 
   eventWindowResize = () => {
-    console.log('resier');
     const screenWidth = window.innerWidth || '1920';
     this.setState({ screenWidth });
   }
