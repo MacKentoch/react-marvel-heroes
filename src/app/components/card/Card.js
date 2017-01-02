@@ -13,6 +13,15 @@ class Card extends PureComponent {
     ? urls.find(item => item.type === 'comiclink')
     : '';
 
+    const currentScreenWidth = screen.availWidth || '1920'; // 1080 res by default
+    let cardSizeAdjust = currentScreenWidth < '1920' ? '240px' : '350px';
+    if (cardSize === 2) {
+      cardSizeAdjust = currentScreenWidth < '1920' ? '350px' : '420px';
+    }
+    if (cardSize === 3) {
+      cardSizeAdjust = currentScreenWidth < '1920' ? '480px' : '780px';
+    }
+
     return (
       <li
         className={cx({
@@ -25,8 +34,8 @@ class Card extends PureComponent {
           <div
             className="card-image"
             style={{
-              maxHeight: cardSize === 1 || cardSize === 2 ? '250px' : '500px',
-              minHeight: cardSize === 1 || cardSize === 2 ? '250px' : '500px'
+              maxHeight: cardSizeAdjust,
+              minHeight: cardSizeAdjust
             }}>
             <img
               className="img-responsive"
